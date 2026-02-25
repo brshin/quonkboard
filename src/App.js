@@ -6,7 +6,9 @@ import {
 } from "react-router-dom";
 
 import Topbar from './components/Topbar';
-import MainDisplay from './pages/MainDisplay';
+import ProximaMainDisplay from './pages/ProximaMainDisplay';
+import SphinxMainDisplay from './pages/SphinxMainDisplay';
+import HomePage from './pages/HomePage';
 import PigeonMode from './components/PigeonMode';
 import {useState, useEffect, useRef } from 'react';
 import partyPigeon from "./party-parrot.gif";
@@ -36,8 +38,10 @@ function App() {
         <Topbar pigeonMode={pigeonMode} setPigeonMode={setPigeonMode} setIP={setIP}/>
         {pigeonMode ? <AnimatedCursor>{Array.from({ length: 2 }, (_, i) => <img src={partyPigeon} alt="party pigeon" style={{height: "30px"}}/>)}</AnimatedCursor> : ""}
         <Routes>
-          <Route path="/" element={<MainDisplay admin={false} pigeonMode={pigeonMode} ip={ip} sx={{cursor: "default"}}/>} />
-          <Route path="/admin" element={<MainDisplay admin={true} pigeonMode={pigeonMode} ip={ip} sx={{cursor: "default"}}/>} />
+          <Route path="/" element={<HomePage admin={false} pigeonMode={pigeonMode} ip={ip} sx={{cursor: "default"}}/>} />
+          <Route path="/ProximaMainDisplay" element={<ProximaMainDisplay admin={false} pigeonMode={pigeonMode} ip={ip} sx={{cursor: "default"}}/>} />
+          <Route path="/SphinxMainDisplay" element={<SphinxMainDisplay admin={false} pigeonMode={pigeonMode} ip={ip} sx={{cursor: "default"}}/>} />
+          {/*<Route path="/admin" element={<MainDisplay admin={true} pigeonMode={pigeonMode} ip={ip} sx={{cursor: "default"}}/>} /> */}
           {/* We should add a super secret code included in each request to slonkboard in case any impostor tries to be sus and send a request. 
           This requires labjack changes. */}
         </Routes>
